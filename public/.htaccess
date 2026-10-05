@@ -1,0 +1,35 @@
+Options -MultiViews
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^index\.html$ / [L,R=301,NC]
+RewriteRule ^digimacks\.html$ /products/digimacks [L,R=301,NC]
+RewriteRule ^digisense\.html$ /products/digisense [L,R=301,NC]
+RewriteRule ^digitrans\.html$ /products/digitrans [L,R=301,NC]
+RewriteRule ^digimacks_brochure\.pdf$ /downloads/digimacks-brochure.pdf [L,R=301,NC]
+RewriteRule ^digimacks_manual\.pdf$ /downloads/digimacks-manual.pdf [L,R=301,NC]
+RewriteRule ^digisense_brochure\.pdf$ /downloads/digisense-brochure.pdf [L,R=301,NC]
+RewriteRule ^digisense_manual\.pdf$ /downloads/digisense-manual.pdf [L,R=301,NC]
+RewriteRule ^digitrans_brochure\.pdf$ /downloads/digitrans-brochure.pdf [L,R=301,NC]
+RewriteRule ^digitrans_manual\.pdf$ /downloads/digitrans-manual.pdf [L,R=301,NC]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^ /index.html [L]
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>

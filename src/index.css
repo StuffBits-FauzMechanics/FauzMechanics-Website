@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-ink-900;
+  }
+
+  ::selection {
+    @apply bg-brand-500 text-ink-900;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-sm font-semibold tracking-wide transition duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary,
+  .btn-dark {
+    @apply btn bg-brand-500 text-ink-950 hover:bg-brand-400;
+  }
+
+  .btn-light {
+    @apply btn bg-white text-ink-950 hover:bg-ink-100;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink-900 bg-white text-ink-950 hover:bg-ink-950 hover:text-white;
+  }
+
+  .btn-outline-light {
+    @apply btn border border-white/40 bg-transparent text-white hover:border-brand-500 hover:bg-brand-500 hover:text-ink-950;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink-950;
+  }
+
+  .eyebrow-light {
+    @apply eyebrow text-white;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .card {
+    @apply rounded-sm border border-ink-200 bg-white;
+  }
+
+  .link-arrow {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-ink-950 underline-offset-4 transition hover:gap-2.5 hover:text-brand-700 hover:underline;
+  }
+
+  .input {
+    @apply block w-full rounded-sm border border-ink-300 bg-white px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 transition focus:border-ink-900 focus:outline-none focus:ring-1 focus:ring-ink-900;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-700;
+  }
+
+  .bg-grid-mask {
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+  }
+}
