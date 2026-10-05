@@ -6,7 +6,7 @@ export default function ProductCard({ product }) {
   return (
     <Link
       to={`/products/${product.slug}`}
-      className="group flex h-full flex-col border-x border-b border-t-2 border-ink-200 border-t-brand-500 bg-white"
+      className="group flex h-full flex-col border-x border-b border-t-2 border-ink-200 border-t-brand-500 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lift"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-white">
         <img

@@ -188,32 +188,29 @@ function ProductsSection() {
 
 function FeaturesSection() {
   return (
-    <section className="section border-y border-ink-200 bg-white">
-      <div className="container grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+    <section className="section border-y border-ink-200 bg-ink-50">
+      <div className="container grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal className="relative">
-          <div className="overflow-hidden border border-ink-200">
+          <div className="border border-ink-200 bg-white">
             <img
               src="/images/scenes/gauge-in-cleanroom.webp"
               alt="Digimacks differential pressure gauge mounted on a clean room wall"
               loading="lazy"
-              className="aspect-[4/3.4] w-full object-cover"
+              className="aspect-[5/4] w-full object-cover"
             />
-          </div>
-          <div className="absolute -bottom-5 left-5 right-5 border border-ink-200 bg-white p-5 sm:left-auto sm:right-5 sm:w-72">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-950">
-              <span className="mb-2 block h-0.5 w-8 bg-brand-500" />
-              Status at a glance
-            </p>
-            <div className="mt-3 flex items-center gap-4">
-              {[
-                ['bg-emerald-500', 'Normal'],
-                ['bg-amber-400', 'Delay'],
-                ['bg-red-500', 'Fault'],
-              ].map(([c, l]) => (
-                <span key={l} className="flex items-center gap-1.5 text-sm font-medium text-ink-700">
-                  <span className={`h-2.5 w-2.5 rounded-full ${c}`} /> {l}
-                </span>
-              ))}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-ink-200 px-4 py-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-950">Status at a glance</p>
+              <div className="flex items-center gap-4">
+                {[
+                  ['bg-emerald-500', 'Normal'],
+                  ['bg-amber-400', 'Delay'],
+                  ['bg-red-500', 'Fault'],
+                ].map(([c, l]) => (
+                  <span key={l} className="flex items-center gap-1.5 text-sm font-medium text-ink-700">
+                    <span className={`h-2.5 w-2.5 rounded-full ${c}`} /> {l}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </Reveal>
@@ -224,9 +221,15 @@ function FeaturesSection() {
             title="Built for the people who rely on every reading"
             description="From QA managers in pharma plants to OEM equipment builders, our instruments are designed to be installed quickly, read instantly and trusted for years."
           />
-          <div className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2">
+          <div className="mt-8 grid border border-ink-200 bg-white sm:grid-cols-2">
             {features.map((f, i) => (
-              <Reveal key={f.title} delay={i * 0.05} className="flex gap-4">
+              <Reveal
+                key={f.title}
+                delay={i * 0.05}
+                className={`flex gap-4 border-ink-200 p-5 ${i % 2 === 1 ? 'sm:border-l' : ''} ${i >= 2 ? 'border-t' : ''} ${
+                  i === 1 ? 'max-sm:border-t' : ''
+                }`}
+              >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-brand-500 text-ink-950">
                   <f.icon className="h-5 w-5" />
                 </span>
@@ -301,25 +304,26 @@ function IndustryTile({ industry, className = '', tall = false, delay = 0 }) {
 
 function ProcessSection() {
   return (
-    <section className="section border-y border-ink-200 bg-white">
+    <section className="section bg-ink-950 text-white">
       <div className="container">
         <SectionHeading
           align="center"
+          tone="light"
           eyebrow="How we work"
           title="From requirement to installed instrument"
           description="A straightforward process, whether you need a single gauge for a clean room or a batch for OEM equipment."
         />
-        <ol className="mt-14 grid gap-px border border-ink-200 bg-ink-200 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-12 grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <Reveal as="li" key={s.title} delay={i * 0.08} className="bg-white p-7">
+            <Reveal as="li" key={s.title} delay={i * 0.08} className="bg-ink-950 p-6 sm:p-7">
               <div className="flex items-center justify-between">
                 <span className="flex h-10 w-10 items-center justify-center bg-brand-500 text-ink-950">
                   <s.icon className="h-5 w-5" />
                 </span>
-                <span className="font-display text-sm font-semibold tracking-[0.16em] text-brand-600">0{i + 1}</span>
+                <span className="font-display text-sm font-semibold tracking-[0.16em] text-brand-400">0{i + 1}</span>
               </div>
-              <h3 className="mt-6 text-lg font-bold">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-600">{s.text}</p>
+              <h3 className="mt-6 text-lg font-bold !text-white">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/60">{s.text}</p>
             </Reveal>
           ))}
         </ol>
@@ -375,9 +379,9 @@ function AboutSection() {
               className="aspect-[4/3.4] w-full object-cover"
             />
           </div>
-          <div className="absolute bottom-5 left-5 border border-ink-200 bg-white px-5 py-4">
-            <p className="font-display text-3xl font-bold">{yearsInBusiness()}+</p>
-            <p className="text-sm font-medium text-ink-600">years of engineering</p>
+          <div className="absolute bottom-5 left-5 bg-ink-950 px-5 py-4 text-white">
+            <p className="font-display text-3xl font-bold text-brand-500">{yearsInBusiness()}+</p>
+            <p className="text-sm font-medium text-white/70">years of engineering</p>
           </div>
         </Reveal>
       </div>

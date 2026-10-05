@@ -30,7 +30,7 @@ export default function HeroStage() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             className="absolute inset-[8%] h-[84%] w-[84%] object-contain"
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </AnimatePresence>
       </div>
