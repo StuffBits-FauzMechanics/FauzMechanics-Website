@@ -39,8 +39,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Inter Variable"', ...defaultTheme.fontFamily.sans],
-        display: ['"Manrope Variable"', ...defaultTheme.fontFamily.sans],      },
+        sans: ['"Manrope Variable"', ...defaultTheme.fontFamily.sans],
+        display: ['"Manrope Variable"', ...defaultTheme.fontFamily.sans],
+      },
       boxShadow: {
         soft: '0 1px 2px rgb(17 13 14 / 0.04), 0 8px 24px -8px rgb(17 13 14 / 0.12)',
         lift: '0 2px 4px rgb(17 13 14 / 0.04), 0 24px 48px -16px rgb(17 13 14 / 0.22)',
