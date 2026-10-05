@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import PageHero from '../components/PageHero.jsx'
 import QuoteForm from '../components/QuoteForm.jsx'
 import Reveal from '../components/Reveal.jsx'
@@ -11,21 +11,31 @@ const channels = [
     icon: Phone,
     title: 'Call us',
     lines: [company.phone.display],
+    href: company.phone.href,
+    action: 'Call now',
   },
   {
     icon: WhatsAppIcon,
     title: 'WhatsApp',
     lines: [company.whatsapp.display],
+    href: `https://wa.me/${company.whatsapp.number}`,
+    action: 'Message on WhatsApp',
+    external: true,
   },
   {
     icon: Mail,
     title: 'Email',
     lines: [company.email],
+    href: `mailto:${company.email}`,
+    action: 'Send email',
   },
   {
     icon: MapPin,
     title: 'Visit us',
     lines: company.address.lines,
+    href: company.address.mapsUrl,
+    action: 'Get directions',
+    external: true,
   },
 ]
 
@@ -48,7 +58,11 @@ export default function Contact() {
         <div className="container grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {channels.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.06}>
-              <div className="flex h-full flex-col border border-ink-200 bg-white p-6">
+              <a
+                href={c.href}
+                {...(c.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                className="group flex h-full flex-col border border-ink-200 bg-white p-6 transition hover:border-ink-950"
+              >
                 <span className="flex h-11 w-11 items-center justify-center bg-brand-500 text-ink-950">
                   <c.icon className="h-5 w-5" />
                 </span>
@@ -60,7 +74,10 @@ export default function Contact() {
                     </span>
                   ))}
                 </p>
-              </div>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-ink-950 group-hover:text-brand-700">
+                  {c.action} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                </span>
+              </a>
             </Reveal>
           ))}
         </div>
@@ -82,9 +99,12 @@ export default function Contact() {
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-400">Director</p>
               <p className="mt-2 font-display text-lg font-bold text-ink-900">{company.director.name}</p>
               <p className="text-sm text-ink-500">{company.director.role}</p>
-              <p className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-ink-950">
+              <a
+                href={company.director.phone.href}
+                className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-ink-950 hover:text-brand-700"
+              >
                 <Phone className="h-4 w-4" /> {company.director.phone.display}
-              </p>
+              </a>
             </div>
           </Reveal>
           <Reveal delay={0.1} className="card p-6 sm:p-10">
@@ -95,25 +115,16 @@ export default function Contact() {
 
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <div className="container">
-          <Reveal className="relative overflow-hidden border-2 border-brand-500 bg-white">
+          <Reveal className="overflow-hidden border-2 border-brand-500 bg-white">
             <iframe
               src={company.address.embedUrl}
               title="Fauz Mechanics location on Google Maps"
               className="h-[420px] w-full"
               loading="lazy"
+              allow="fullscreen"
+              allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-same-origin"
             />
-            <div className="absolute bottom-5 left-5 right-5 max-w-sm border border-ink-200 border-l-4 border-l-brand-500 bg-white p-5 sm:right-auto">
-              <p className="font-display font-bold text-ink-900">Fauz Mechanics</p>
-              <p className="mt-1 text-sm text-ink-500">
-                {company.address.lines.map((l) => (
-                  <span key={l} className="block">
-                    {l}
-                  </span>
-                ))}
-              </p>
-            </div>
           </Reveal>
         </div>
       </section>

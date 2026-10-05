@@ -59,26 +59,39 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-500">Contact</h3>
             <ul className="mt-4 space-y-4 text-sm">
-              <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
-                <span>
-                  {company.address.lines.map((l) => (
-                    <span key={l} className="block">
-                      {l}
-                    </span>
-                  ))}
-                </span>
+              <li>
+                <a
+                  href={company.address.mapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex gap-3 transition hover:text-white"
+                >
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
+                  <span>
+                    {company.address.lines.map((l) => (
+                      <span key={l} className="block">
+                        {l}
+                      </span>
+                    ))}
+                  </span>
+                </a>
               </li>
               <li className="flex gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
                 <span>
-                  <span className="block">{company.phone.display}</span>
-                  <span className="block">{company.director.phone.display}</span>
+                  <a href={company.phone.href} className="block transition hover:text-white">
+                    {company.phone.display}
+                  </a>
+                  <a href={company.director.phone.href} className="block transition hover:text-white">
+                    {company.director.phone.display}
+                  </a>
                 </span>
               </li>
-              <li className="flex gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
-                <span>{company.email}</span>
+              <li>
+                <a href={`mailto:${company.email}`} className="flex gap-3 transition hover:text-white">
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
+                  <span>{company.email}</span>
+                </a>
               </li>
             </ul>
           </div>
