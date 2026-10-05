@@ -17,7 +17,7 @@ function isLinkActive(to, pathname, hash) {
   const [path, anchor] = to.split('#')
   if (pathname !== path) return false
   if (anchor) return hash === `#${anchor}`
-  return !links.some((l) => l.to === `${path}${hash}`)
+  return !hash || !links.some((l) => l.to === `${path}${hash}`)
 }
 
 function ProductsMenu() {

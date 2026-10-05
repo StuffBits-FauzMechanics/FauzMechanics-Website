@@ -4,7 +4,6 @@ import {
   ArrowRight,
   BellRing,
   Cable,
-  Check,
   Cpu,
   Gauge,
   LockKeyhole,
@@ -14,7 +13,7 @@ import {
   SlidersHorizontal,
   Wrench,
 } from 'lucide-react'
-import HeroStage from '../components/HeroStage.jsx'
+import HeroVideo from '../components/HeroVideo.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import ProductCard from '../components/ProductCard.jsx'
 import Reveal from '../components/Reveal.jsx'
@@ -26,9 +25,11 @@ import { company, yearsInBusiness } from '../data/company.js'
 
 const stats = [
   { value: `${yearsInBusiness()}+`, label: 'Years in instrumentation', note: `Established ${company.founded}` },
+  { value: `${products.length}`, label: 'Product lines', note: 'Gauges · switches · transmitters' },
   { value: '±0.5%', label: 'Full-scale accuracy', note: 'MEMS sensing' },
   { value: '1000', unit: 'mm Wc', label: 'Maximum standard range', note: 'Bi-directional' },
-  { value: '4', label: 'Output options', note: '4–20 mA · 0–10 V · Relay · RS485' },
+  { value: '4', label: 'Output options', note: 'Analog · relay · RS485' },
+  { value: 'IP65', label: 'Enclosure rating', note: 'Digitrans transmitter' },
 ]
 
 const features = [
@@ -89,68 +90,49 @@ const steps = [
 
 function Hero() {
   return (
-    <section className="border-b border-ink-200 bg-white pt-16">
-      <div className="container grid items-center gap-12 pb-14 pt-4 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-16 lg:pt-6">
+    <section className="flex min-h-svh flex-col border-b border-ink-200 bg-white pt-16">
+      <HeroVideo>
         <motion.div
+          className="max-w-4xl"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="eyebrow">
+          <p className="eyebrow-light">
             <span className="h-px w-8 bg-brand-500" />
-            Since {company.founded} · Mumbai, India
+            Since {company.founded}
           </p>
-          <h1 className="mt-5 text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.5rem]">
+          <h1 className="mt-4 text-[2.25rem] font-bold leading-[1.08] tracking-tight !text-white sm:text-5xl lg:text-[3.5rem]">
             Precision pressure monitoring for critical environments
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-600">
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/80">
             Digital differential pressure gauges, switches and transmitters for pharmaceutical clean rooms, HVAC
             systems and laboratory equipment, engineered to be simple to install and easy to read.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link to="/products" className="btn-dark px-6 py-3.5">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Link to="/products" className="btn-primary px-6 py-3.5">
               Explore products <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/contact#quote" className="btn-outline px-6 py-3.5">
+            <Link to="/contact#quote" className="btn-outline-light px-6 py-3.5">
               Request a quote
             </Link>
           </div>
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-600">
-            {['±0.5% FS accuracy', 'Customised ranges', 'Brochures & manuals online'].map((t) => (
-              <li key={t} className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-brand-600" strokeWidth={2.5} />
-                {t}
-              </li>
-            ))}
-          </ul>
         </motion.div>
+      </HeroVideo>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <HeroStage />
-        </motion.div>
-      </div>
-
-      <div className="border-t border-ink-200">
-        <dl className="container grid grid-cols-2 lg:grid-cols-4">
-          {stats.map((s, i) => (
-            <div
-              key={s.label}
-              className={`py-8 lg:py-10 ${i % 2 === 1 ? 'border-l border-ink-200 pl-6 sm:pl-8' : ''} ${
-                i >= 2 ? 'border-t border-ink-200 lg:border-t-0' : ''
-              } ${i > 0 ? 'lg:border-l lg:border-ink-200 lg:pl-8' : ''}`}
-            >
+      <div className="bg-ink-50">
+        <dl className="container grid grid-cols-2 gap-px bg-ink-200 !px-0 sm:grid-cols-3 lg:grid-cols-6">
+          {stats.map((s) => (
+            <div key={s.label} className="group relative bg-ink-50 px-5 py-5 transition hover:bg-white lg:px-6 lg:py-6">
+              <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-brand-500 transition-transform duration-300 group-hover:scale-x-100" />
               <dt className="sr-only">{s.label}</dt>
               <dd>
-                <span className="font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
+                <span className="flex items-baseline gap-1 font-display text-2xl font-bold tracking-tight text-ink-950 lg:text-[1.75rem]">
                   {s.value}
-                  {s.unit && <span className="ml-1.5 text-sm font-semibold text-ink-500">{s.unit}</span>}
+                  {s.unit && <span className="text-xs font-semibold text-ink-500">{s.unit}</span>}
                 </span>
-                <span className="mt-2 block text-sm font-medium text-ink-800">{s.label}</span>
-                <span className="mt-0.5 block text-xs text-ink-500">{s.note}</span>
+                <span className="mt-1.5 block text-[13px] font-semibold text-ink-800">{s.label}</span>
+                <span className="mt-0.5 block text-xs leading-snug text-ink-500">{s.note}</span>
               </dd>
             </div>
           ))}
