@@ -16,8 +16,8 @@ export function LogoMark({ className = 'h-9 w-9' }) {
 export default function Logo({ tone = 'dark', className = '', compact = false }) {
   const text = tone === 'light' ? 'text-white' : 'text-ink-950'
   const wordmark = compact
-    ? 'text-[13px] tracking-[0.08em] xl:text-[15px] xl:tracking-[0.12em]'
-    : 'text-[15px] tracking-[0.12em]'
+    ? 'text-[18px] tracking-[-0.01em] xl:text-[20px]'
+    : 'text-[20px] tracking-[-0.01em]'
   return (
     <Link
       to="/"
@@ -29,7 +29,9 @@ export default function Logo({ tone = 'dark', className = '', compact = false })
           tone === 'light' ? 'ring-white/15' : 'ring-black/10'
         }`}
       />
-      <span className={`font-wordmark leading-none transition-colors ${wordmark} ${text}`}>FAUZ MECHANICS</span>
+      <span className={`font-display font-extrabold leading-none transition-colors ${wordmark} ${text}`}>
+        Fauz Mechanics
+      </span>
     </Link>
   )
 }

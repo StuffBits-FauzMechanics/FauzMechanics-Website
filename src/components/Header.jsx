@@ -9,8 +9,16 @@ import { company } from '../data/company.js'
 const links = [
   { to: '/industries', label: 'Industries' },
   { to: '/about', label: 'About' },
+  { to: '/about#team', label: 'Team' },
   { to: '/contact', label: 'Contact' },
 ]
+
+function isLinkActive(to, pathname, hash) {
+  const [path, anchor] = to.split('#')
+  if (pathname !== path) return false
+  if (anchor) return hash === `#${anchor}`
+  return !links.some((l) => l.to === `${path}${hash}`)
+}
 
 function ProductsMenu() {
   const [open, setOpen] = useState(false)
@@ -42,10 +50,8 @@ function ProductsMenu() {
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-1 px-2.5 py-2 text-sm font-medium transition xl:px-3 ${
-          active || open
-            ? 'text-white shadow-[inset_0_-2px_0_#00CFFF]'
-            : 'text-white/70 hover:text-white'
+        className={`flex h-16 items-center gap-1 px-3 font-display text-[16px] font-bold tracking-[-0.01em] text-white transition xl:px-4 ${
+          active || open ? 'shadow-[inset_0_-3px_0_#00CFFF]' : 'hover:shadow-[inset_0_-3px_0_rgb(255_255_255/0.35)]'
         }`}
       >
         Products
@@ -117,7 +123,7 @@ function ProductsMenu() {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -126,15 +132,15 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => setMobileOpen(false), [pathname])
+  useEffect(() => setMobileOpen(false), [pathname, hash])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
   }, [mobileOpen])
 
-  const navLinkClass = ({ isActive }) =>
-    `whitespace-nowrap px-2.5 py-2 text-sm font-medium transition xl:px-3 ${
-      isActive ? 'text-white shadow-[inset_0_-2px_0_#00CFFF]' : 'text-white/70 hover:text-white'
+  const navLinkClass = (isActive) =>
+    `flex h-16 items-center whitespace-nowrap px-3 font-display text-[16px] font-bold tracking-[-0.01em] text-white transition xl:px-4 ${
+      isActive ? 'shadow-[inset_0_-3px_0_#00CFFF]' : 'hover:shadow-[inset_0_-3px_0_rgb(255_255_255/0.35)]'
     }`
 
   return (
@@ -148,19 +154,23 @@ export default function Header() {
 
         <nav className="hidden items-center lg:flex" aria-label="Main">
           <ProductsMenu />
-          {links.map((l) => (
-            <NavLink key={l.to} to={l.to} className={navLinkClass}>
-              {l.label}
-            </NavLink>
-          ))}
+          {links.map((l) => {
+            const active = isLinkActive(l.to, pathname, hash)
+            return (
+              <Link
+                key={l.to}
+                to={l.to}
+                aria-current={active ? 'page' : undefined}
+                className={navLinkClass(active)}
+              >
+                {l.label}
+              </Link>
+            )
+          })}
         </nav>
 
-        <div className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-5">
-          <span className="flex items-center gap-2 whitespace-nowrap text-sm font-medium text-white/80">
-            <Phone className="h-4 w-4" />
-            {company.phone.display}
-          </span>
-          <Link to="/contact#quote" className="btn-primary whitespace-nowrap py-2.5">
+        <div className="hidden shrink-0 items-center lg:flex">
+          <Link to="/contact#quote" className="btn-primary whitespace-nowrap py-2.5 font-bold">
             Request a quote
           </Link>
         </div>

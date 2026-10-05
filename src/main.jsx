@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import '@fontsource-variable/inter'
 import '@fontsource-variable/manrope'
-import '@fontsource/michroma'
 import './index.css'
 import App from './App.jsx'
 
