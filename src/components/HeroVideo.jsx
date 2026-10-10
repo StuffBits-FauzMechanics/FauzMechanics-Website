@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
+import { publicUrl } from '../utils/publicUrl'
 
 const MAX_CLIP_SECONDS = 8
 
 const clips = [
-  { src: '/videos/hero-gauge.mp4', poster: '/images/scenes/gauge-in-cleanroom.webp' },
-  { src: '/videos/hero-circuit-board.mp4', poster: '/images/scenes/calibration-bench.webp' },
-  { src: '/videos/hero-laboratory.mp4', poster: '/images/scenes/biosafety-lab.webp' },
-  { src: '/videos/hero-ventilation.mp4', poster: '/images/scenes/hvac-ahu.webp' },
+  { src: publicUrl('videos/hero-gauge.mp4'), poster: publicUrl('images/scenes/gauge-in-cleanroom.webp') },
+  { src: publicUrl('videos/hero-circuit-board.mp4'), poster: publicUrl('images/scenes/calibration-bench.webp') },
+  { src: publicUrl('videos/hero-laboratory.mp4'), poster: publicUrl('images/scenes/biosafety-lab.webp') },
+  { src: publicUrl('videos/hero-ventilation.mp4'), poster: publicUrl('images/scenes/hvac-ahu.webp') },
 ]
+
 
 export default function HeroVideo({ children }) {
   const reduceMotion = useReducedMotion()

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { publicUrl } from '../utils/publicUrl'
+
 import {
   ArrowRight,
   BellRing,
@@ -175,7 +177,8 @@ function FeaturesSection() {
         <Reveal className="relative">
           <div className="border border-ink-200 bg-white">
             <img
-              src="/images/scenes/gauge-in-cleanroom.webp"
+              src={publicUrl('images/scenes/gauge-in-cleanroom.webp')}
+
               alt="Digimacks differential pressure gauge mounted on a clean room wall"
               loading="lazy"
               className="aspect-[5/4] w-full object-cover"
@@ -355,7 +358,8 @@ function AboutSection() {
         <Reveal className="relative order-1 lg:order-2">
           <div className="overflow-hidden border border-ink-200">
             <img
-              src="/images/scenes/calibration-bench.webp"
+              src={publicUrl('images/scenes/calibration-bench.webp')}
+
               alt="Engineer calibrating a pressure sensor circuit board"
               loading="lazy"
               className="aspect-[4/3.4] w-full object-cover"

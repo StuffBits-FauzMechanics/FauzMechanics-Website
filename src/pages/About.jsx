@@ -5,6 +5,8 @@ import Reveal from '../components/Reveal.jsx'
 import CtaBand from '../components/CtaBand.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
 import { company, yearsInBusiness } from '../data/company.js'
+import { publicUrl } from '../utils/publicUrl'
+
 
 const values = [
   {
@@ -67,14 +69,15 @@ export default function About() {
           <Reveal className="relative">
             <div className="grid grid-cols-5 gap-3">
               <img
-                src="/images/scenes/calibration-bench.webp"
+                src={publicUrl('images/scenes/calibration-bench.webp')}
                 alt="Engineer working on a pressure sensor circuit board"
                 loading="lazy"
                 className="col-span-3 aspect-[3/4] w-full border border-ink-200 object-cover"
               />
               <div className="col-span-2 grid gap-4">
                 <img
-                  src="/images/scenes/gauge-in-cleanroom.webp"
+                  src={publicUrl('images/scenes/gauge-in-cleanroom.webp')}
+
                   alt="Digimacks gauge installed on a clean room wall"
                   loading="lazy"
                   className="aspect-square w-full border border-ink-200 object-cover"

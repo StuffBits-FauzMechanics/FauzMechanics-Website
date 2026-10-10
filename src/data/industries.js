@@ -1,11 +1,13 @@
 import { Building2, Fan, FlaskConical, Factory, PaintBucket, PackageOpen } from 'lucide-react'
+import { publicUrl } from '../utils/publicUrl'
 
 export const industries = [
   {
     id: 'clean-rooms',
     title: 'Pharmaceutical clean rooms',
     icon: Building2,
-    image: '/images/scenes/cleanroom.webp',
+    image: publicUrl('images/scenes/cleanroom.webp'),
+
     summary:
       'Maintain the pressure cascade between grades and catch door-open or filter-loading events before they become compliance issues.',
     points: [
@@ -20,7 +22,8 @@ export const industries = [
     id: 'hvac',
     title: 'HVAC & air handling units',
     icon: Fan,
-    image: '/images/scenes/hvac-ahu.webp',
+    image: publicUrl('images/scenes/hvac-ahu.webp'),
+
     summary:
       'Track pressure drop across pre-filters, fine filters and HEPA banks to plan replacements and protect fan energy efficiency.',
     points: [
@@ -35,7 +38,8 @@ export const industries = [
     id: 'laminar-flow',
     title: 'Laminar flow & biosafety cabinets',
     icon: FlaskConical,
-    image: '/images/scenes/biosafety-lab.webp',
+    image: publicUrl('images/scenes/biosafety-lab.webp'),
+
     summary:
       'Give operators an instant, readable indication of HEPA filter health on LAF benches, biosafety cabinets and fume hoods.',
     points: [
@@ -50,7 +54,8 @@ export const industries = [
     id: 'pharma-equipment',
     title: 'Pharmaceutical equipment & process',
     icon: Factory,
-    image: '/images/scenes/pharma-production.webp',
+    image: publicUrl('images/scenes/pharma-production.webp'),
+
     summary:
       'Reliable low-pressure measurement for isolators, dispensing booths, process equipment and containment systems.',
     points: [

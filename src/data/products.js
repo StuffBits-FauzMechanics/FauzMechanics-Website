@@ -1,4 +1,7 @@
-const img = (slug, name) => `/images/products/${slug}/${name}.webp`
+import { publicUrl } from '../utils/publicUrl'
+
+const img = (slug, name) => publicUrl(`images/products/${slug}/${name}.webp`)
+
 
 export const products = [
   {
@@ -92,8 +95,9 @@ export const products = [
     ],
     video: 'q64N9N5XjvY',
     downloads: [
-      { label: 'Product brochure', file: '/downloads/digimacks-brochure.pdf', size: '0.5 MB' },
-      { label: 'User manual', file: '/downloads/digimacks-manual.pdf', size: '6.0 MB' },
+      { label: 'Product brochure', file: publicUrl('downloads/digimacks-brochure.pdf'), size: '0.5 MB' },
+      { label: 'User manual', file: publicUrl('downloads/digimacks-manual.pdf'), size: '6.0 MB' },
+
     ],
   },
   {
@@ -171,8 +175,9 @@ export const products = [
       { src: img('digisense', 'rear-angle'), alt: 'Digisense rear angled view' },
     ],
     downloads: [
-      { label: 'Product brochure', file: '/downloads/digisense-brochure.pdf', size: '1.7 MB' },
-      { label: 'User manual', file: '/downloads/digisense-manual.pdf', size: '3.6 MB' },
+      { label: 'Product brochure', file: publicUrl('downloads/digisense-brochure.pdf'), size: '1.7 MB' },
+      { label: 'User manual', file: publicUrl('downloads/digisense-manual.pdf'), size: '3.6 MB' },
+
     ],
   },
   {
@@ -251,8 +256,9 @@ export const products = [
       { src: img('digitrans', 'rear-angle'), alt: 'Digitrans DPT-411 rear angled view' },
     ],
     downloads: [
-      { label: 'Product brochure', file: '/downloads/digitrans-brochure.pdf', size: '1.5 MB' },
-      { label: 'User manual', file: '/downloads/digitrans-manual.pdf', size: '3.3 MB' },
+      { label: 'Product brochure', file: publicUrl('downloads/digitrans-brochure.pdf'), size: '1.5 MB' },
+      { label: 'User manual', file: publicUrl('downloads/digitrans-manual.pdf'), size: '3.3 MB' },
+
     ],
   },
 ]
