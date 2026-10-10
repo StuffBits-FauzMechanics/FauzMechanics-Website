@@ -1,0 +1,1 @@
+import{m as s,j as p}from"./motion-BuzshG9j.js";function c({as:i="div",delay:t=0,y:o=24,className:n="",children:e,...a}){const r=s[i];return p.jsx(r,{initial:{opacity:0,y:o},whileInView:{opacity:1,y:0},viewport:{once:!0,margin:"-80px"},transition:{duration:.6,delay:t,ease:[.22,1,.36,1]},className:n,...a,children:e})}export{c as R};

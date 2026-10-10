@@ -1,0 +1,6 @@
+import{j as t}from"./motion-BuzshG9j.js";import{L as e}from"./react-Do_hefwG.js";import{u as o}from"./usePageMeta-DEghg2dV.js";import{c as a}from"./index-CDiv1PLn.js";/**
+ * @license lucide-react v1.49.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const s={name:"arrow-left",size:24,node:[["path",{d:"m12 19-7-7 7-7",key:"1l729n"}],["path",{d:"M19 12H5",key:"x3x0zl"}]]};s.node;const n=a(s);function m(){return o({title:"Page not found"}),t.jsx("section",{className:"flex min-h-[70vh] items-center bg-white pb-20 pt-32",children:t.jsxs("div",{className:"container text-center",children:[t.jsx("p",{className:"font-display text-6xl font-bold tracking-tight text-ink-900 sm:text-7xl",children:"404"}),t.jsx("h1",{className:"mt-4 text-3xl font-bold tracking-tight sm:text-4xl",children:"This reading is out of range"}),t.jsx("p",{className:"mx-auto mt-4 max-w-md text-ink-600",children:"The page you're looking for doesn't exist or has moved. Let's get you back on track."}),t.jsxs("div",{className:"mt-8 flex flex-col justify-center gap-3 sm:flex-row",children:[t.jsxs(e,{to:"/",className:"btn-dark",children:[t.jsx(n,{className:"h-4 w-4"})," Back to home"]}),t.jsx(e,{to:"/products",className:"btn-outline",children:"Browse products"})]})]})})}export{m as default};
