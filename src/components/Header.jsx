@@ -9,7 +9,6 @@ import { company } from '../data/company.js'
 const links = [
   { to: '/industries', label: 'Industries' },
   { to: '/about', label: 'About' },
-  { to: '/about#team', label: 'Team' },
   { to: '/contact', label: 'Contact' },
 ]
 
